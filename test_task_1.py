@@ -1,7 +1,6 @@
 # Our goal is to create a fullname field by concatenating a first and last name
 import unittest
 import task_1
-import random
 
 
 class TestFullNameCreated(unittest.TestCase):

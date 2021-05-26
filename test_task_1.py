@@ -1,20 +1,26 @@
 # Our goal is to create a fullname field by concatenating a first and last name
 import unittest
+from unittest.mock import patch
 import task_1
 
 
 class TestFullNameCreated(unittest.TestCase):
-    def setUp(self) -> None:
-        self.user_records = task_1.create_full_name()
 
-    def test_full_name_field_exists(self) -> None:
-        for record in self.user_records:
-            self.assertTrue("full_name" in record)
+    def test_create_full_name(self) -> None:
+        loaded_records = [{'forename': 'Steve', 'surname': 'Ortiz'}]
 
-    def test_full_name_is_string(self) -> None:
-        for record in self.user_records:
-            self.assertEqual(type(record["full_name"]), str)
+        result = task_1.FullNameCreator(loaded_records).create_full_name()
 
-    def test_full_name_correct_format(self) -> None:  # names start with uppercase letter and are separated with a space
-        for record in self.user_records:
-            self.assertRegex(record["full_name"], "^[A-Z].*[ ][A-Z].*$")
+        self.assertEqual(result[0]["full_name"], "Steve Ortiz")
+
+    def test_loaded_records_empty(self) -> None:
+        loaded_records = []
+
+        result = task_1.FullNameCreator(loaded_records).create_full_name()
+        self.assertEqual(result, [])
+
+    def test_create_full_name_multiple(self) -> None:
+        loaded_records = [{'forename': 'Steve', 'surname': 'Ortiz'},{'forename': 'Jenni', 'surname': 'Black'}]
+
+        result = task_1.FullNameCreator(loaded_records).create_full_name()
+        self.assertEqual(len(result), 2)

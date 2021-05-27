@@ -1,5 +1,5 @@
 import json
-from typing import Dict
+from typing import Dict, List
 import datetime
 from dateutil.relativedelta import *
 
@@ -12,7 +12,7 @@ def load_records(filepath):
 
 
 class FullNameFieldGenerator:
-    def create_full_name(self) -> list[Dict]:
+    def create_full_name(self) -> List[Dict]:
         for record in self.loaded_records:
             record["full_name"] = record["forename"] + " " + record["surname"]
 
@@ -29,7 +29,7 @@ class ThirtyPlusOnly:
         self.todays_date_full = todays_date
         self.age_to_test = 30
 
-    def collect_over_thirty(self) -> list[Dict]:
+    def collect_over_thirty(self) -> List[Dict]:
         for record in self.loaded_records:
             date_of_birth = datetime.datetime.strptime(record["date_of_birth"], '%Y/%m/%d').date()
             age_in_years = relativedelta(self.todays_date_full, date_of_birth).years

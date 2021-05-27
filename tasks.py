@@ -1,7 +1,7 @@
 import json
 from typing import Dict, List
 import datetime
-from dateutil.relativedelta import *
+from dateutil.relativedelta import relativedelta
 
 
 def load_records(filepath):

@@ -3,5 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#code coverage generated
+.coverage
+
 # IDE stuff
 .idea

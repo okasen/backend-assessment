@@ -94,3 +94,111 @@ class TestOverThirty(unittest.TestCase):
         self.assertEqual(result, [{'full_name': "Jen Eric", "date_of_birth": "1990/05/04"},
                                   {'full_name': "Mick Chicken", "date_of_birth": "1991/04/04"},
                                   {'full_name': "Thing One", "date_of_birth": "1991/05/25"}])
+
+
+class TestCompanyFieldGenerated(unittest.TestCase):
+    def test_one_full_record(self) -> None:
+        user_record = [{'full_name': "Jennifer Black", 'company_id': 2}]
+        company_record = [
+            {
+                "id": 1,
+                "name": "Morneau-Shepell",
+                "headquarters": "Canada",
+                "industry": "HR"
+            },
+            {
+                "id": 2,
+                "name": "LifeWorks",
+                "headquarters": "UK",
+                "industry": "Tech"
+            },
+        ]
+
+        result = tasks.CompanyFieldGenerator(user_record, company_record).company_id_to_field()
+
+        self.assertEqual(result, [{'full_name': "Jennifer Black", 'company': {
+            "id": 2,
+            "name": "LifeWorks",
+            "headquarters": "UK",
+            "industry": "Tech"
+        }
+                                   }])
+
+    def test_no_company_data(self) -> None:
+        user_record = [{'full_name': "Mick Chicken", 'company_id': 0}]
+        company_record = [
+            {
+                "id": 1,
+                "name": "Morneau-Shepell",
+                "headquarters": "Canada",
+                "industry": "HR"
+            },
+            {
+                "id": 2,
+                "name": "LifeWorks",
+                "headquarters": "UK",
+                "industry": "Tech"
+            },
+        ]
+
+        result = tasks.CompanyFieldGenerator(user_record, company_record).company_id_to_field()
+
+        self.assertEqual(result, [{'full_name': "Mick Chicken", 'company_id': 0}])
+
+    def test_empty_record(self) -> None:
+        user_record = []
+        company_record = [
+            {
+                "id": 1,
+                "name": "Morneau-Shepell",
+                "headquarters": "Canada",
+                "industry": "HR"
+            },
+            {
+                "id": 2,
+                "name": "LifeWorks",
+                "headquarters": "UK",
+                "industry": "Tech"
+            },
+        ]
+
+        result = tasks.CompanyFieldGenerator(user_record, company_record).company_id_to_field()
+
+        self.assertEqual(result, [])
+
+    def test_multiple_full_records(self) -> None:
+        user_record = [{'full_name': "Mick Chicken", 'company_id': 0},
+                       {'full_name': "Jennifer Black", 'company_id': 2},
+                       {'full_name': "Jen Eric", 'company_id': 1}]
+        company_record = [
+            {
+                "id": 1,
+                "name": "Morneau-Shepell",
+                "headquarters": "Canada",
+                "industry": "HR"
+            },
+            {
+                "id": 2,
+                "name": "LifeWorks",
+                "headquarters": "UK",
+                "industry": "Tech"
+            },
+        ]
+
+        result = tasks.CompanyFieldGenerator(user_record, company_record).company_id_to_field()
+
+        self.assertEqual(result, [{'full_name': "Mick Chicken", 'company_id': 0},
+                                  {'full_name': "Jennifer Black", 'company': {
+                                        "id": 2,
+                                        "name": "LifeWorks",
+                                        "headquarters": "UK",
+                                        "industry": "Tech"
+                                    }
+                                   },
+                                  {'full_name': "Jen Eric", 'company': {
+                                      "id": 1,
+                                      "name": "Morneau-Shepell",
+                                      "headquarters": "Canada",
+                                      "industry": "HR"
+                                  },
+                                   }])

@@ -54,11 +54,10 @@ class CompanyFieldGenerator:
     def company_id_to_field(self) -> List[Dict]:
         for record in self.user_records:
             if "company_id" in record:
-                for company in self.company_records:
-                    if company["id"] == record["company_id"]:
-                        record["company"] = company
-            if "company" in record and "company_id" in record:
-                record.pop("company_id")  # only popping if there's a company record to replace the id!
+                matching_company = list(filter(lambda match: match["id"] == record["company_id"], self.company_records))
+                if len(matching_company) > 0:
+                    record["company"] = matching_company[0] # in case there are multiple matches, we'll pick the first
+                    del record["company_id"]  # only popping if there's a company record to replace the id!
 
         # if any of these if-statements fail, I just want to return the input record that was given with no changes
         return self.user_records

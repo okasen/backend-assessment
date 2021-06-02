@@ -6,14 +6,14 @@ from dateutil.relativedelta import relativedelta
 
 def load_records(filepath):
     with open(filepath) as user_records:
-        loaded_records = json.load(user_records)
+        loaded_records = json.load(user_records) # pragma: no mutate
 
     return loaded_records
 
 
 def load_company_records(filepath):
     with open(filepath) as company_records:
-        loaded_company_records = json.load(company_records)
+        loaded_company_records = json.load(company_records) # pragma: no mutate
 
     return loaded_company_records
 

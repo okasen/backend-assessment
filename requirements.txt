@@ -2,9 +2,6 @@ apilogs==1.2
 appdirs==1.4.4
 atlassian-python-api==3.10.0
 attrs==21.2.0
-awslogs==0.14.0
-boto3==1.17.75
-botocore==1.20.75
 CacheControl==0.12.6
 cachy==0.3.0
 certifi==2020.12.5
@@ -39,7 +36,6 @@ lockfile==0.12.2
 mando==0.6.4
 MarkupSafe==2.0.1
 mccabe==0.6.1
-merlin @ file:///Users/jenniferblack/Desktop/merlin/dist/merlin-2.0.0a10.tar.gz
 more-itertools==8.8.0
 moto==2.0.8
 msgpack==1.0.2
@@ -55,8 +51,6 @@ pep8==1.7.1
 pexpect==4.8.0
 pkginfo==1.7.0
 pluggy==0.13.1
-poetry==1.1.6
-poetry-core==1.0.3
 pony==0.7.14
 pre-commit==2.12.1
 ptyprocess==0.7.0

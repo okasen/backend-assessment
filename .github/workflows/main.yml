@@ -38,7 +38,7 @@ jobs:
           coverage-badge -o coveragebadge.svg
       - name: add git identity
         run: 
-          git config --global user.email "jennilblack@outlook.com@
+          git config --global user.email "jennilblack@outlook.com"
           git config --global user.name "okasen"
       - name: stage changed badge file
         run: git add /home/runner/work/backend-assessment/backend-assessment/coveragebadge.svg

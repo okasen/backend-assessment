@@ -35,5 +35,13 @@ jobs:
           coverage run -m pytest
       - name: create Coverage badge
         run:
-          coverage-badge -o ~/coverage-annotation/coveragebadge.svg
+          coverage-badge -o coveragebadge.svg
+      - name: stage changed badge file
+        run: git add /home/runner/work/backend-assessment/backend-assessment/coveragebadge.svg
+      - name: commit badge file
+        run: git commit -m "coverage badge added"
+      - name: fetch from master
+        run: git fetch origin master
+      - name: push badge to master
+        run: git push origin HEAD:master
         

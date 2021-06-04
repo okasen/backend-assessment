@@ -34,5 +34,6 @@ jobs:
         run:
           coverage run -m pytest
       - name: create Coverage badge
+        run:
           coverage-badge -o coveragebadge.svg
         

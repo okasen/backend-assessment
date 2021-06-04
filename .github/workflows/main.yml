@@ -45,6 +45,7 @@ jobs:
       - name: stage changed badge file
         run: git add /home/runner/work/backend-assessment/backend-assessment/coveragebadge.svg
       - name: commit badge file
+        continue-on-error: true
         run: git commit -m "coverage badge added"
       - name: fetch from master
         run: git fetch origin master

@@ -33,5 +33,6 @@ jobs:
       - name: Generate coverage report with Coverage
         run:
           coverage run -m pytest
+      - name: create Coverage badge
           coverage-badge -o coveragebadge.svg
         

@@ -1,3 +1,5 @@
+![Generic badge](coveragebadge.svg)
+
 # LifeWorks Backend Developer Assessment
 
 This assessment is designed to be simple and its primary aim is to assess how you approach and solve software development problems holistically. It contains only [three tasks](#tasks) which involve transforming user and company data.

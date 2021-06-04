@@ -35,7 +35,7 @@ jobs:
           coverage run -m pytest
       - name: create Coverage badge
         run:
-          coverage-badge -o coveragebadge.svg
+          coverage-badge -o -f coveragebadge.svg
       - name: add git email
         run: 
           git config --global user.email "jennilblack@outlook.com"

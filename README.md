@@ -1,6 +1,6 @@
 ![Generic badge](coveragebadge.svg)
 
-![Generic badge](https://img.shields.io/github/workflow/status/okasen/backend-assessment/Python%20package?style=for-the-badge)
+![Generic badge](https://img.shields.io/github/workflow/status/okasen/backend-assessment/Python%20package?style=for-the-badge)![Generic badge](https://img.shields.io/github/commit-activity/w/okasen/backend-assessment?style=for-the-badge)
 ## About these tasks ##
 
 These tasks were completed as part of backend team induction exercises, meant to grow and improve professional development skills. The tasks are basic, but are as follows:
